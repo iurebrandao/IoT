@@ -1,19 +1,20 @@
 #!python3
 import paho.mqtt.client as mqtt
 
+
 def convert_temp(temp):
     if temp > 200:
         return temp / 1000
     return temp
 
 
-# método que retorna a temperatura
+#  método que retorna a temperatura
 def read_temp():
     file = open("/sys/class/thermal/thermal_zone0/temp", "r")
     temp = int(file.read().replace("\n", ""))
     file.close()
     temp = convert_temp(temp)
-    return str(temp) + " °C"
+    return str(temp)
 
 
 # Função de callback quando publica alguma mensagem
@@ -31,7 +32,7 @@ broker_address = "localhost"
 port = 1883
 timelive = 60
 
-
+client.username_pw_set(username="iure",password="mosquito")
 client.connect(broker_address, port)
 
 client.loop_start()
