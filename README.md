@@ -6,11 +6,11 @@ Tarefas relacionadas a matéria de Segurança em IoT
 ```
 sudo docker-compose up 
 ``` 
-- Posteriormente, rode entre no container com:
+- Posteriormente, entre no container com:
 ```
 sudo docker exec -it mqtt bash
 ```
-- Execute o seguinte comando para criar um arquivo de texto com senha para um usuário:
+- Dentro do container, execute o seguinte comando para criar um arquivo de texto com senha para um usuário:
 ```
 mosquitto_passwd -c file.txt <user>
 ```
