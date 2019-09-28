@@ -24,3 +24,24 @@ password_file /etc/mosquitto/file.txt
 ```
 service mosquitto restart
 ```
+## Configuração do ELK
+
+- Rode o comando do docker:
+```
+docker-compose up elk
+```
+
+- Após isso, execute o comando para entrar no container:
+```
+sudo docker exec -it <nome-do-container> /bin/bash
+```
+- Pare o LogStash com o seguinte comando:
+```
+/etc/init.d/logstash stop
+```
+- Execute o seguinte comando para pegar novos logs:
+```
+/opt/logstash/bin/logstash -f logstash-simple.conf
+```
+- No kibana, crie um `index_pattern` como: `index_name`.
+- A partir disso, basta criar as visualizações no Kibana para acompanhar os logs.
