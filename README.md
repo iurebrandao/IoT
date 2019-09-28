@@ -43,5 +43,6 @@ sudo docker exec -it <nome-do-container> /bin/bash
 ```
 /opt/logstash/bin/logstash -f logstash-simple.conf
 ```
+- Verifique se o elastic pegou os arquivos de log no seguinte endereço: `http://localhost:9200/_cat/indices?v`
 - No kibana, crie um `index_pattern` como: `index_name`.
 - A partir disso, basta criar as visualizações no Kibana para acompanhar os logs.
