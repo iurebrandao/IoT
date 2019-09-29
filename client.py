@@ -11,8 +11,8 @@ s = sched.scheduler(time.time, time.sleep)
 
 #  método que retorna a utilização de cpu
 def read_cpu_usage():
-    return round(float(os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} 
-                                    END {print usage }' ''').readline()), 2)
+    return str(round(float(os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} 
+                                    END {print usage }' ''').readline()), 2))
 
 
 # Função de callback quando publica alguma mensagem

@@ -15,7 +15,7 @@ logging.basicConfig(filename="logFile.txt",
 
 
 def write_to_log(cpu_usage):
-    logging.info('CPU USAGE: ' + str(cpu_usage))
+    logging.info(str(cpu_usage))
 
 
 def on_message(client, userdata, message):
