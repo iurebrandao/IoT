@@ -2,15 +2,21 @@ version: "3"
 services:
   mqtt:
       image: toke/mosquitto
-      network_mode: bridge
       container_name: mqtt
       ports:
         - 1883:1883
       restart: unless-stopped
-
+      networks:
+        - my_net
   elk:
-    image: sebp/elk
+    image: iurebrandao/elk-python:1.01
     ports:
       - "5601:5601"
       - "9200:9200"
       - "5044:5044"
+    networks:
+      - my_net
+
+networks:
+  my_net:
+    driver: bridge

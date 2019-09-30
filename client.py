@@ -40,16 +40,16 @@ if __name__ == "__main__":
     # definindo o cliente
     client_name = 'client'
     client = mqtt.Client(client_name)
-    #
-    # # definindo o acesso ao broker
-    # broker_address = "localhost"
-    # port = 1883
-    # timelive = 60
-    #
-    # client.username_pw_set(username="iure", password="mosquito")
-    # client.connect(broker_address, port)
-    #
-    # client.loop_start()
+
+    # definindo o acesso ao broker
+    broker_address = "localhost"
+    port = 1883
+    timelive = 60
+
+    client.username_pw_set(username="iure", password="mosquito")
+    client.connect(broker_address, port)
+
+    client.loop_start()
 
     signal.signal(signal.SIGINT, signal_handler)
 

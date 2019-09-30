@@ -39,7 +39,8 @@ sudo docker exec -it <nome-do-container> /bin/bash
 ```
 /etc/init.d/logstash stop
 ```
-- Execute o seguinte comando para pegar novos logs:
+- Crie o arquivo `logstash-simple.conf` com as mesmas configurações do arquivo 
+nesse repositório. Após isso, execute o seguinte comando para pegar novos logs:
 ```
 /opt/logstash/bin/logstash -f logstash-simple.conf
 ```
