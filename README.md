@@ -4,7 +4,7 @@ Tarefas relacionadas a matéria de Segurança em IoT
 ## Configuração e execução do broker mosquitto
 - Primeiramente, rode o container (sem daemon) com:
 ```
-sudo docker-compose up 
+sudo docker-compose up mqtt
 ``` 
 - Posteriormente, entre no container com:
 ```

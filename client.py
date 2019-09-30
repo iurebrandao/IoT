@@ -11,8 +11,8 @@ s = sched.scheduler(time.time, time.sleep)
 
 #  método que retorna a utilização de cpu
 def read_cpu_usage():
-    return str(round(float(os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} 
-                                    END {print usage }' ''').readline()), 2))
+    return str(int(round(float(os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} 
+                                    END {print usage }' ''').readline()), 2)))
 
 
 # Função de callback quando publica alguma mensagem
@@ -24,15 +24,15 @@ def on_publish(client, userdata, result):
 # Finalizar o script quando o usuário apertar "Ctrl+C"
 def signal_handler(sig, frame):
     print('Finalizando o script...')
-    # client.loop_stop()
-    # client.disconnect()
+    client.loop_stop()
+    client.disconnect()
     sys.exit(0)
 
 
 # write cpg usage to log in every minute
 def publish_cpu_usage(sc, client):
-    # client.publish("pc/usage", read_cpu_usage())
-    cpu_usage = read_cpu_usage()
+    print('publicando utilização da cpu')
+    client.publish("pc/usage", read_cpu_usage())
     s.enter(60, 1, publish_cpu_usage, (sc, client))
 
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    s.enter(60, 1, publish_cpu_usage, (s, client))
+    s.enter(1, 1, publish_cpu_usage, (s, client))
     s.run()
 
 

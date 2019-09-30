@@ -19,9 +19,10 @@ def write_to_log(cpu_usage):
 
 
 def on_message(client, userdata, message):
-    print("mensagem recebida: ", str(message.payload.decode("utf-8")))
+    msg = str(message.payload.decode("utf-8"))
+    print("mensagem recebida: ", msg)
     print("topico: ", message.topic)
-    write_to_log(message.payload)
+    write_to_log(msg)
 
 
 def on_log(client, userdata, level, buf):
@@ -40,7 +41,7 @@ client_name = 'iure'
 client = mqtt.Client(client_name)
 
 # definindo o acesso ao broker
-broker_address = "localhost"
+broker_address = "mqtt"
 port = 1883
 timelive = 60
 
