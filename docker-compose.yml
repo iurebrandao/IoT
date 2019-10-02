@@ -9,18 +9,13 @@ services:
       networks:
         - my_net
   elk:
-    image: iurebrandao/elk-python:1.03
+    image: iurebrandao/elk-connect:1.00
     ports:
       - "5601:5601"
       - "9200:9200"
       - "5044:5044"
     volumes:
       - ".:/home/"
-      - "/usr/lib/python3/dist-packages/"
-    networks:
-      - my_net
-  client:
-    image: iurebrandao/python-client:1.01
     networks:
       - my_net
 

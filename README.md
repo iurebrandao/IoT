@@ -35,14 +35,10 @@ docker-compose up elk
 ```
 sudo docker exec -it <nome-do-container> /bin/bash
 ```
-- Entre no virtualenv do python para rodar o script de connect:
+- Configure um ip para o docker e gns3 editando o arquivo com o comando (descomentando as duas ultimas linhas):
 ```
-source /home/myenv/bin/activate
-```
-
-- Execute o comando de connect:
-```
-python /home/connect.py
+vim /etc/network/interfaces
+service network restart
 ```
 
 - Pare o LogStash com o seguinte comando:
@@ -60,7 +56,12 @@ nesse repositório. Após isso, execute o seguinte comando para pegar novos logs
 
 
 ## Como atualizar a imagem no docker hub
-- Caso queira atualizar as imagens que foram para o docker hub e depois utilizar no GNS3, primeiro utilize o seguinte comando para ver as imagens:
+- Caso queira atualizar as imagens que foram para o docker hub e depois utilizar no GNS3, primeiro faça um commit com as mudanças:
+ ```
+docker commit <container_id> iurebrandao/elk-connect:1.00
+```
+
+Depois utilize o seguinte comando para ver as imagens:
 ```
 docker images
 ```
@@ -75,4 +76,14 @@ docker login --username=<username>
 - Agora basta subir para o docker hub com o comando:
 ```
 docker push iurebrandao/elk-python:<versao>
+```
+
+## Script do client
+- Para executar o script do client, primeiro faça o build:
+```
+docker build -t python-client .
+```
+- Agora execute com:
+```
+docker run python-client
 ```
