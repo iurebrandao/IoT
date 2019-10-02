@@ -35,6 +35,16 @@ docker-compose up elk
 ```
 sudo docker exec -it <nome-do-container> /bin/bash
 ```
+- Entre no virtualenv do python para rodar o script de connect:
+```
+source /home/myenv/bin/activate
+```
+
+- Execute o comando de connect:
+```
+python /home/connect.py
+```
+
 - Pare o LogStash com o seguinte comando:
 ```
 /etc/init.d/logstash stop
@@ -47,3 +57,22 @@ nesse repositório. Após isso, execute o seguinte comando para pegar novos logs
 - Verifique se o elastic pegou os arquivos de log no seguinte endereço: `http://localhost:9200/_cat/indices?v`
 - No kibana, crie um `index_pattern` como: `index_name`.
 - A partir disso, basta criar as visualizações no Kibana para acompanhar os logs.
+
+
+## Como atualizar a imagem no docker hub
+- Caso queira atualizar as imagens que foram para o docker hub e depois utilizar no GNS3, primeiro utilize o seguinte comando para ver as imagens:
+```
+docker images
+```
+- Após localizar a sua imagem, mude o nome dela para a versão que você desejar:
+```
+docker tag <image_id> iurebrandao/elk-python:<versao> 
+```
+- Faça o login no docker hub pelo terminal:
+```
+docker login --username=<username> 
+```
+- Agora basta subir para o docker hub com o comando:
+```
+docker push iurebrandao/elk-python:<versao>
+```

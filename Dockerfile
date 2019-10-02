@@ -9,4 +9,4 @@ WORKDIR /IOT/
 COPY . /IOT/
 
 RUN pip install -r requirements.txt
-CMD["python3","client.py"]
+CMD ["/bin/bash"]
