@@ -35,12 +35,10 @@ docker-compose up elk
 ```
 sudo docker exec -it <nome-do-container> /bin/bash
 ```
-- Configure um ip para o docker e gns3 editando o arquivo com o comando (descomentando as duas ultimas linhas):
+- Execute o script de conectar para escrever os logs de tempetura com:
 ```
-vim /etc/network/interfaces
-service network restart
+python3 /home/connect.py
 ```
-
 - Pare o LogStash com o seguinte comando:
 ```
 /etc/init.d/logstash stop
@@ -79,11 +77,11 @@ docker push iurebrandao/elk-python:<versao>
 ```
 
 ## Script do client
-- Para executar o script do client, primeiro faça o build:
+- Para executar o script do client, primeiro execute o container:
 ```
-docker build -t python-client .
+docker run -it iurebrandao/python-client:1.01
 ```
 - Agora execute com:
 ```
-docker run python-client
+python3 client.py
 ```
