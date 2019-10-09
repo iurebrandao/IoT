@@ -16,6 +16,9 @@ services:
       - "5044:5044"
     volumes:
       - ".:/home/"
+      - ".data/elasticsearch:/usr/share/elastisearch/data"
+      - ".data/logstash:/var/lib/logstash"
+      - ".data/kibana:/var/lib/kibana"
     networks:
       - my_net
 
