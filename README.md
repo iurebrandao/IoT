@@ -85,3 +85,8 @@ docker run -it iurebrandao/python-client:1.01
 ```
 python3 client.py
 ```
+
+## Grok pattern for nginx
+```
+%{IPORHOST:remote_ip} - %{DATA:user_name} \[%{HTTPDATE:access_time}\] \"%{WORD:http_method} %{DATA:url} HTTP/%{NUMBER:http_version}\" %{NUMBER:response_code} %{NUMBER:body_sent_bytes} \"%{DATA:referrer}\" \"%{DATA:agent}\"
+```
