@@ -59,5 +59,3 @@ client.subscribe("pc/usage")
 
 # necessário para executar as funções de callback
 client.loop_forever()
-
-

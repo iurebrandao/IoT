@@ -16,9 +16,20 @@ services:
       - "5044:5044"
     volumes:
       - ".:/home/"
+      - "./logstash/:/etc/logstash/conf.d/"
       - ".data/elasticsearch:/usr/share/elastisearch/data"
       - ".data/logstash:/var/lib/logstash"
       - ".data/kibana:/var/lib/kibana"
+    networks:
+      - my_net
+
+  filebeat:
+    build:
+      context: filebeat/
+    command: filebeat -e -strict.perms=false
+    volumes:
+      - /usr/share/app
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
     networks:
       - my_net
 

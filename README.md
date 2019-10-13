@@ -24,7 +24,7 @@ password_file /etc/mosquitto/file.txt
 ```
 service mosquitto restart
 ```
-## Configuração do ELK
+## Configuração do [ELK](https://elk-docker.readthedocs.io)
 
 - Rode o comando do docker:
 ```
@@ -48,7 +48,8 @@ nesse repositório. Após isso, execute o seguinte comando para pegar novos logs
 ```
 /opt/logstash/bin/logstash -f logstash-simple.conf &
 ```
-- Verifique se o elastic pegou os arquivos de log no seguinte endereço: `http://localhost:9200/_cat/indices?v`
+- Verifique se o elastic pegou os arquivos de log no seguinte endereço: 
+`http://localhost:9200/_cat/indices?v`
 - No kibana, crie um `index_pattern` como: `index_name`.
 - A partir disso, basta criar as visualizações no Kibana para acompanhar os logs.
 
